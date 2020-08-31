@@ -24,6 +24,7 @@ echo "--------------------------------------"
 echo "--      Set Password for Root       --"
 echo "--------------------------------------"
 echo "Enter password for root user: "
-echo "root:toor" | passwd
+#echo "root:toor" | passwd
+passwd
 
 exit
