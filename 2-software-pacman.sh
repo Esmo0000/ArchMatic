@@ -22,7 +22,7 @@ PKGS=(
     'cronie'                # cron jobs
     'curl'                  # Remote content retrieval
     'file-roller'           # Archive utility
-    'gtop'                  # System monitoring via terminal
+    #'gtop'                  # System monitoring via terminal
     'gufw'                  # Firewall manager
     'hardinfo'              # Hardware info app
     'htop'                  # Process viewer
@@ -65,9 +65,11 @@ PKGS=(
 
     'flameshot'             # Screenshots
     'nautilus'              # Filesystem browser
+    'variety'               # Wallpaper changer
 
     # DEVELOPMENT ---------------------------------------------------------
 
+    'gedit'                 # Text editor
     'clang'                 # C Lang compiler
     'cmake'                 # Cross-platform open-source make system
     'code'                  # Visual Studio Code
