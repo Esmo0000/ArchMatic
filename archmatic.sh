@@ -85,12 +85,9 @@ function baseSetup {
         # --- XORG Display Rendering
             'xorg'                  # Base Package
             'xorg-drivers'          # Display Drivers 
-            #'xterm'                 # Terminal for TTY
             'xorg-server'           # XOrg server
-            #'xorg-apps'             # XOrg apps group
             'xorg-xinit'            # XOrg init
             'xorg-xinput'           # Xorg xinput
-            #'mesa'                  # Open source version of OpenGL
             
         # --- Drivers
         'xf86-video-intel'          # Intel Video Drivers
@@ -116,8 +113,6 @@ function baseSetup {
         # --- Networking Setup
             'wpa_supplicant'            # Key negotiation for WPA wireless networks
             'dialog'                    # Enables shell scripts to trigger dialog boxes
-            #'openvpn'                   # Open VPN support
-            #'networkmanager-openvpn'    # Open VPN plugin for NM
             'network-manager-applet'    # System tray icon/utility for network connectivity
             'libsecret'                 # Library for storing passwords
         
@@ -135,14 +130,7 @@ function baseSetup {
             'bluez-firmware'        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
             'blueberry'             # Bluetooth configuration tool
             'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
-        
-        # --- Printers
-            #'cups'                  # Open source printer drivers
-            #'cups-pdf'              # PDF support for cups
-            #'ghostscript'           # PostScript interpreter
-            #'gsfonts'               # Adobe Postscript replacement fonts
-            #'hplip'                 # HP Drivers
-            #'system-config-printer' # Printer setup  utility
+
     )
 
     for PKG in "${PKGS[@]}"; do
@@ -164,7 +152,6 @@ function softwareSetup {
         'cronie'                # cron jobs
         'curl'                  # Remote content retrieval
         'file-roller'           # Archive utility
-        #'gtop'                  # System monitoring via terminal
         'gufw'                  # Firewall manager
         'hardinfo'              # Hardware info app
         'htop'                  # Process viewer
@@ -174,9 +161,7 @@ function softwareSetup {
         'openssh'               # SSH connectivity tools
         'p7zip'                 # 7z compression program
         'rsync'                 # Remote file sync utility
-        #'speedtest-cli'         # Internet speed via terminal
         'terminus-font'         # Font package with some bigger fonts for login terminal
-        #'tlp'                   # Advanced laptop power management
         'unrar'                 # RAR compression program
         'unzip'                 # Zip compression program
         'wget'                  # Remote content retrieval
@@ -189,7 +174,6 @@ function softwareSetup {
 
         # DISK UTILITIES ------------------------------------------------------
 
-        #'android-tools'         # ADB for Android
         'android-file-transfer' # Android File Transfer
         'autofs'                # Auto-mounter
         'btrfs-progs'           # BTRFS Support
@@ -209,11 +193,7 @@ function softwareSetup {
         # GENERAL UTILITIES ---------------------------------------------------
 
         'flameshot'             # Screenshots
-        #'freerdp'               # RDP Connections
-        #'libvncserver'          # VNC Connections
         'nautilus'              # Filesystem browser
-        #'remmina'               # Remote Connection
-        #'veracrypt'             # Disc encryption utility
         'variety'               # Wallpaper changer
         'firefox'               # Mozilla Firefox Web Browser
 
@@ -223,7 +203,6 @@ function softwareSetup {
         'clang'                 # C Lang compiler
         'cmake'                 # Cross-platform open-source make system
         'code'                  # Visual Studio Code
-        #'electron'              # Cross-platform development using Javascript
         'git'                   # Version control system
         'gcc'                   # C/C++ compiler
         'glibc'                 # C libraries
@@ -233,24 +212,6 @@ function softwareSetup {
         'python'                # Scripting language
         'yarn'                  # Dependency management (Hyper needs this)
 
-        # MEDIA ---------------------------------------------------------------
-
-        #'kdenlive'              # Movie Render
-        #'obs-studio'            # Record your screen
-        #'celluloid'             # Video player
-        
-        # GRAPHICS AND DESIGN -------------------------------------------------
-
-        #'gcolor2'               # Colorpicker
-        #'gimp'                  # GNU Image Manipulation Program
-        #'ristretto'             # Multi image viewer
-
-        # PRODUCTIVITY --------------------------------------------------------
-
-        #'hunspell'              # Spellcheck libraries
-        #'hunspell-en'           # English spellcheck library
-        #'xpdf'                  # PDF viewer
-
     )
 
     AURPKGS=(
@@ -258,13 +219,10 @@ function softwareSetup {
     # UTILITIES -----------------------------------------------------------
 
     'i3lock-fancy'              # Screen locker
-    #'synology-drive'            # Synology Drive
-    #'freeoffice'                # Office Alternative
     
     # MEDIA ---------------------------------------------------------------
 
     'screenkey'                 # Screencast your keypresses
-    #'lbry-app-bin'              # LBRY Linux Application
 
     # COMMUNICATIONS ------------------------------------------------------
 
@@ -273,7 +231,7 @@ function softwareSetup {
 
     # THEMES --------------------------------------------------------------
 
-    'lightdm-webkit-theme-aether-git'   # Lightdm Login Theme - https://github.com/NoiSek/Aether#installation
+    'lightdm-webkit-theme-aether'   # Lightdm Login Theme - https://github.com/NoiSek/Aether#installation
     'materia-gtk-theme'             # Desktop Theme
     'papirus-icon-theme'            # Desktop Icons
     )
@@ -323,6 +281,13 @@ fi' > ${HOME}/.xinitrc
 
     # By default, startx incorrectly looks for the .serverauth file in our HOME folder.
     sudo sed -i 's|xserverauthfile=\$HOME/.serverauth.\$\$|xserverauthfile=\$XAUTHORITY|g' /bin/startx
+
+    # ------------------------------------------------------------------------
+    
+    echo -e "\nUpdating Awesome config to Material Awesome"
+
+    # By default, awesome start with it's own ugly default style, we replace that with material awesome theme.
+    git clone https://github.com/Sniki/material-awesome ~/.config/awesome
 
     # ------------------------------------------------------------------------
 
