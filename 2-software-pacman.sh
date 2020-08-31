@@ -22,7 +22,6 @@ PKGS=(
     'cronie'                # cron jobs
     'curl'                  # Remote content retrieval
     'file-roller'           # Archive utility
-    #'gtop'                  # System monitoring via terminal
     'gufw'                  # Firewall manager
     'hardinfo'              # Hardware info app
     'htop'                  # Process viewer
