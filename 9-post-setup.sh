@@ -51,6 +51,13 @@ sudo sed -i 's|xserverauthfile=\$HOME/.serverauth.\$\$|xserverauthfile=\$XAUTHOR
 
 # ------------------------------------------------------------------------
 
+echo -e "\nUpdating Awesome config to Material Awesome"
+
+# By default, awesome start with it's own ugly default style, we replace that with material awesome theme.
+git clone https://github.com/Sniki/material-awesome ~/.config/awesome
+
+# ------------------------------------------------------------------------
+
 echo -e "\nConfiguring LTS Kernel as a secondary boot option"
 
 sudo cp /boot/loader/entries/arch.conf /boot/loader/entries/arch-lts.conf
