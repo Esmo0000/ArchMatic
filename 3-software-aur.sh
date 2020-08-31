@@ -24,19 +24,18 @@ PKGS=(
     # MEDIA ---------------------------------------------------------------
 
     'screenkey'                 # Screencast your keypresses
-    'lbry-app-bin'              # LBRY Linux Application
 
     # COMMUNICATIONS ------------------------------------------------------
 
-    'google-chrome-dev'         # Brave
+    'viber'         # Viber
     
 
     # THEMES --------------------------------------------------------------
 
     'lightdm-webkit-theme-aether-git'   # Lightdm Login Theme - https://github.com/NoiSek/Aether#installation
-    'materia-gtk-theme'             # Desktop Theme
-    'papirus-icon-theme'            # Desktop Icons
-    'capitaine-cursors'             # Cursor Themes
+    'materia-gtk-theme'                 # Desktop Theme
+    'papirus-icon-theme'                # Desktop Icons
+    'capitaine-cursors'                 # Cursor Themes
 )
 
 
