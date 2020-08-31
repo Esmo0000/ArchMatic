@@ -8,13 +8,14 @@
 #-------------------------------------------------------------------------
 
 echo "-------------------------------------------------"
-echo "Setting up mirrors for optimal download - US Only"
+echo "Setting up mirrors for optimal download - CZ Only"
 echo "-------------------------------------------------"
 timedatectl set-ntp true
+pacman -Sy
 pacman -S --noconfirm pacman-contrib
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
-
+curl -s "https://www.archlinux.org/mirrorlist/?country=CZ&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
+pacman -Sy
 
 
 echo -e "\nInstalling prereqs...\n$HR"
@@ -53,45 +54,28 @@ mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
 mkfs.ext4 -L "ROOT" "${DISK}2"
 
 # mount target
-mkdir /mnt
 mount -t ext4 "${DISK}2" /mnt
 mkdir /mnt/boot
-mkdir /mnt/boot/efi
 mount -t vfat "${DISK}1" /mnt/boot/
+mkdir /mnt/boot/efi
 
 echo "--------------------------------------"
 echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
 pacstrap /mnt base base-devel linux linux-firmware vim nano sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
 
-echo "--------------------------------------"
-echo "-- Bootloader Systemd Installation  --"
-echo "--------------------------------------"
-bootctl install
-cat <<EOF > /boot/loader/entries/arch.conf
-title Arch Linux  
-linux /vmlinuz-linux  
-initrd  /initramfs-linux.img  
-options root=${DISK}1 rw
-EOF
+wget https://raw.githubusercontent.com/czM1K3/ArchMatic/master/bootinstall.sh -P /mnt
 
-echo "--------------------------------------"
-echo "--          Network Setup           --"
-echo "--------------------------------------"
-pacman -S network-manager dhclient --noconfirm --needed
-systemctl enable --now NetworkManager
+echo "sh bootinstall.sh"
+echo sh bootinstall.sh | arch-chroot /mnt
 
-echo "--------------------------------------"
-echo "--      Set Password for Root       --"
-echo "--------------------------------------"
-echo "Enter password for root user: "
-passwd root
+rm /mnt/bootinstall.sh
 
-exit
 umount -R /mnt
 
 echo "--------------------------------------"
 echo "--   SYSTEM READY FOR FIRST BOOT    --"
 echo "--------------------------------------"
+
+reboot
