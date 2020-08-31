@@ -20,6 +20,14 @@ PKGS=(
         'xorg-xinit'            # XOrg init
         'xorg-xinput'           # Xorg xinput
         #'mesa'                  # Open source version of OpenGL
+        
+    # --- Drivers
+        'xf86-video-intel'          # Intel Video Drivers
+        'vulkan-intel'              # Intel Vulkan Drivers
+        'vulkan-icd-loader'         # Intel Vulkan ICD Loader
+        'lib32-mesa'                # 32-bit Mesa Drivers
+        'lib32-vulkan-intel'        # 32-bit Vulkan Drivers
+        'lib32-vulkan-icd-loader'   # 32-bit Vulkan ICD Loader
 
     # --- Setup Desktop
         'awesome'               # Awesome Desktop
