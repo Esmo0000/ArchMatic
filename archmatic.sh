@@ -30,7 +30,7 @@ function setup {
 
         read -p "Please enter username:" username
 
-        read -ps "Please enter password:" password
+        read -sp "Please enter password:" password
 
         read -sp "Please repeat password:" password2
 
@@ -43,11 +43,11 @@ function setup {
     fi
 
     echo "-------------------------------------------------"
-    echo "Setting up mirrors for optimal download - CZ Only"
+    echo "Setting up mirrors for optimal download - US Only"
     echo "-------------------------------------------------"
     pacman -S --noconfirm pacman-contrib curl
-    mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-    curl -s "https://www.archlinux.org/mirrorlist/?country=CZ&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
+    #mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+    #curl -s "https://www.archlinux.org/mirrorlist/?country=CZ&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
     echo "-------------------------------------------------"
     echo "              makepkg configuration              "
@@ -65,9 +65,9 @@ function setup {
     echo "-------------------------------------------------"
     sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
     locale-gen
-    timedatectl --no-ask-password set-timezone America/Chicago
+    timedatectl --no-ask-password set-timezone Europe/Tirane
     timedatectl --no-ask-password set-ntp 1
-    localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_COLLATE="" LC_TIME="en_US.UTF-8"
+    localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_TIME="en_US.UTF-8"
 
     # Set keymaps
     localectl --no-ask-password set-keymap us
@@ -85,12 +85,12 @@ function baseSetup {
         # --- XORG Display Rendering
             'xorg'                  # Base Package
             'xorg-drivers'          # Display Drivers 
-            'xterm'                 # Terminal for TTY
+            #'xterm'                 # Terminal for TTY
             'xorg-server'           # XOrg server
-            'xorg-apps'             # XOrg apps group
+            #'xorg-apps'             # XOrg apps group
             'xorg-xinit'            # XOrg init
             'xorg-xinput'           # Xorg xinput
-            'mesa'                  # Open source version of OpenGL
+            #'mesa'                  # Open source version of OpenGL
 
         # --- Setup Desktop
             'awesome'               # Awesome Desktop
@@ -108,8 +108,8 @@ function baseSetup {
         # --- Networking Setup
             'wpa_supplicant'            # Key negotiation for WPA wireless networks
             'dialog'                    # Enables shell scripts to trigger dialog boxes
-            'openvpn'                   # Open VPN support
-            'networkmanager-openvpn'    # Open VPN plugin for NM
+            #'openvpn'                   # Open VPN support
+            #'networkmanager-openvpn'    # Open VPN plugin for NM
             'network-manager-applet'    # System tray icon/utility for network connectivity
             'libsecret'                 # Library for storing passwords
         
@@ -129,12 +129,12 @@ function baseSetup {
             'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
         
         # --- Printers
-            'cups'                  # Open source printer drivers
-            'cups-pdf'              # PDF support for cups
-            'ghostscript'           # PostScript interpreter
-            'gsfonts'               # Adobe Postscript replacement fonts
-            'hplip'                 # HP Drivers
-            'system-config-printer' # Printer setup  utility
+            #'cups'                  # Open source printer drivers
+            #'cups-pdf'              # PDF support for cups
+            #'ghostscript'           # PostScript interpreter
+            #'gsfonts'               # Adobe Postscript replacement fonts
+            #'hplip'                 # HP Drivers
+            #'system-config-printer' # Printer setup  utility
     )
 
     for PKG in "${PKGS[@]}"; do
@@ -156,7 +156,7 @@ function softwareSetup {
         'cronie'                # cron jobs
         'curl'                  # Remote content retrieval
         'file-roller'           # Archive utility
-        'gtop'                  # System monitoring via terminal
+        #'gtop'                  # System monitoring via terminal
         'gufw'                  # Firewall manager
         'hardinfo'              # Hardware info app
         'htop'                  # Process viewer
@@ -166,9 +166,9 @@ function softwareSetup {
         'openssh'               # SSH connectivity tools
         'p7zip'                 # 7z compression program
         'rsync'                 # Remote file sync utility
-        'speedtest-cli'         # Internet speed via terminal
+        #'speedtest-cli'         # Internet speed via terminal
         'terminus-font'         # Font package with some bigger fonts for login terminal
-        'tlp'                   # Advanced laptop power management
+        #'tlp'                   # Advanced laptop power management
         'unrar'                 # RAR compression program
         'unzip'                 # Zip compression program
         'wget'                  # Remote content retrieval
@@ -181,7 +181,7 @@ function softwareSetup {
 
         # DISK UTILITIES ------------------------------------------------------
 
-        'android-tools'         # ADB for Android
+        #'android-tools'         # ADB for Android
         'android-file-transfer' # Android File Transfer
         'autofs'                # Auto-mounter
         'btrfs-progs'           # BTRFS Support
@@ -201,11 +201,11 @@ function softwareSetup {
         # GENERAL UTILITIES ---------------------------------------------------
 
         'flameshot'             # Screenshots
-        'freerdp'               # RDP Connections
-        'libvncserver'          # VNC Connections
+        #'freerdp'               # RDP Connections
+        #'libvncserver'          # VNC Connections
         'nautilus'              # Filesystem browser
-        'remmina'               # Remote Connection
-        'veracrypt'             # Disc encryption utility
+        #'remmina'               # Remote Connection
+        #'veracrypt'             # Disc encryption utility
         'variety'               # Wallpaper changer
 
         # DEVELOPMENT ---------------------------------------------------------
@@ -214,7 +214,7 @@ function softwareSetup {
         'clang'                 # C Lang compiler
         'cmake'                 # Cross-platform open-source make system
         'code'                  # Visual Studio Code
-        'electron'              # Cross-platform development using Javascript
+        #'electron'              # Cross-platform development using Javascript
         'git'                   # Version control system
         'gcc'                   # C/C++ compiler
         'glibc'                 # C libraries
@@ -226,21 +226,21 @@ function softwareSetup {
 
         # MEDIA ---------------------------------------------------------------
 
-        'kdenlive'              # Movie Render
-        'obs-studio'            # Record your screen
-        'celluloid'             # Video player
+        #'kdenlive'              # Movie Render
+        #'obs-studio'            # Record your screen
+        #'celluloid'             # Video player
         
         # GRAPHICS AND DESIGN -------------------------------------------------
 
-        'gcolor2'               # Colorpicker
-        'gimp'                  # GNU Image Manipulation Program
-        'ristretto'             # Multi image viewer
+        #'gcolor2'               # Colorpicker
+        #'gimp'                  # GNU Image Manipulation Program
+        #'ristretto'             # Multi image viewer
 
         # PRODUCTIVITY --------------------------------------------------------
 
-        'hunspell'              # Spellcheck libraries
-        'hunspell-en'           # English spellcheck library
-        'xpdf'                  # PDF viewer
+        #'hunspell'              # Spellcheck libraries
+        #'hunspell-en'           # English spellcheck library
+        #'xpdf'                  # PDF viewer
 
     )
 
@@ -249,22 +249,22 @@ function softwareSetup {
     # UTILITIES -----------------------------------------------------------
 
     'i3lock-fancy'              # Screen locker
-    'synology-drive'            # Synology Drive
-    'freeoffice'                # Office Alternative
+    #'synology-drive'            # Synology Drive
+    #'freeoffice'                # Office Alternative
     
     # MEDIA ---------------------------------------------------------------
 
     'screenkey'                 # Screencast your keypresses
-    'lbry-app-bin'              # LBRY Linux Application
+    #'lbry-app-bin'              # LBRY Linux Application
 
     # COMMUNICATIONS ------------------------------------------------------
 
-    'brave-nightly-bin'         # Brave
+    'viber'         # Viber
     
 
     # THEMES --------------------------------------------------------------
 
-    'lightdm-webkit-theme-aether'   # Lightdm Login Theme - https://github.com/NoiSek/Aether#installation
+    'lightdm-webkit-theme-aether-git'   # Lightdm Login Theme - https://github.com/NoiSek/Aether#installation
     'materia-gtk-theme'             # Desktop Theme
     'papirus-icon-theme'            # Desktop Icons
     )
@@ -379,7 +379,7 @@ FONT=ter-v32b' < /etc/vconsole.conf
     echo
     echo "Enabling the cups service daemon so we can print"
 
-    systemctl enable --now org.cups.cupsd.service
+    #systemctl enable --now org.cups.cupsd.service
 
     echo "Configuring NTP, DHCP and NetworkManager services"
     sudo ntpd -qg && sudo systemctl enable --now ntpd && sudo systemctl disable dhcpcd && sudo systemctl stop dhcpcd && sudo systemctl enable --now NetworkManager
