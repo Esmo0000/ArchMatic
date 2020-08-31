@@ -66,7 +66,8 @@ PKGS=(
     'flameshot'             # Screenshots
     'nautilus'              # Filesystem browser
     'variety'               # Wallpaper changer
-
+    'firefox'               # Mozilla Firefox Web Browser
+    
     # DEVELOPMENT ---------------------------------------------------------
 
     'gedit'                 # Text editor
