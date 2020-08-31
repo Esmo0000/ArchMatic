@@ -14,12 +14,12 @@ PKGS=(
     # --- XORG Display Rendering
         'xorg'                  # Base Package
         'xorg-drivers'          # Display Drivers 
-        'xterm'                 # Terminal for TTY
+        #'xterm'                 # Terminal for TTY
         'xorg-server'           # XOrg server
-        'xorg-apps'             # XOrg apps group
+        #'xorg-apps'             # XOrg apps group
         'xorg-xinit'            # XOrg init
         'xorg-xinput'           # Xorg xinput
-        'mesa'                  # Open source version of OpenGL
+        #'mesa'                  # Open source version of OpenGL
 
     # --- Setup Desktop
         'awesome'               # Awesome Desktop
@@ -56,12 +56,12 @@ PKGS=(
         'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
     
     # --- Printers
-        'cups'                  # Open source printer drivers
-        'cups-pdf'              # PDF support for cups
-        'ghostscript'           # PostScript interpreter
-        'gsfonts'               # Adobe Postscript replacement fonts
-        'hplip'                 # HP Drivers
-        'system-config-printer' # Printer setup  utility
+        #'cups'                  # Open source printer drivers
+        #'cups-pdf'              # PDF support for cups
+        #'ghostscript'           # PostScript interpreter
+        #'gsfonts'               # Adobe Postscript replacement fonts
+        #'hplip'                 # HP Drivers
+        #'system-config-printer' # Printer setup  utility
 )
 
 for PKG in "${PKGS[@]}"; do
