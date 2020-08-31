@@ -15,7 +15,7 @@ First, setup the boot USB, boot arch live iso, and run the `preinstall.sh` from 
 This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
 
 ```bash
-wget https://raw.githubusercontent.com/czM1K3/ArchMatic/master/preinstall.sh
+wget https://raw.githubusercontent.com/Sniki/ArchMatic/master/preinstall.sh
 sh preinstall.sh
 sh bootinstall.sh
 exit
@@ -26,7 +26,7 @@ reboot
 
 ```bash
 pacman -S --no-confirm pacman-contrib curl git
-git clone https://github.com/czM1K3/ArchMatic
+git clone https://github.com/Sniki/ArchMatic
 cd ArchMatic
 ./0-setup.sh
 ./1-base.sh
@@ -40,7 +40,7 @@ cd ArchMatic
 ---
 
 ### System Description
-This runs Awesome Window Manager with the base configuration from the Material-Awesome project <https://github.com/ChrisTitusTech/material-awesome>.
+This runs Awesome Window Manager with the base configuration from the Material-Awesome project <https://github.com/Sniki/material-awesome>.
 
 To boot I use `systemd` because it's minimalist, comes built-in, and since the Linux kernel has an EFI image, all we need is a way to execute it.
 
