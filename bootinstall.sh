@@ -9,6 +9,7 @@ bootctl install
 cat <<EOF > /boot/loader/entries/arch.conf
 title Arch Linux  
 linux /vmlinuz-linux  
+initrd  /intel-ucode.img
 initrd  /initramfs-linux.img  
 options root=${DISK} rw
 EOF
