@@ -54,7 +54,7 @@ sudo sed -i 's|xserverauthfile=\$HOME/.serverauth.\$\$|xserverauthfile=\$XAUTHOR
 echo -e "\nUpdating Awesome config to Material Awesome"
 
 # By default, awesome start with it's own ugly default style, we replace that with material awesome theme.
-git clone https://github.com/Sniki/material-awesome ~/.config/awesome
+git clone https://github.com/Esmoj19/material-awesome.git ~/.config/awesome
 
 # ------------------------------------------------------------------------
 
